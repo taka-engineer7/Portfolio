@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cafes
+
   get "profiles/edit"
   devise_for :users, controllers: {
     registrations: 'users/registrations'
