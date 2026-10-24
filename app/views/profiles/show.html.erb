@@ -1,0 +1,5 @@
+<h1>プロフィール</h1>
+
+<%= @user.name %>
+<%= @user.introduction %>
+<%= image_tag @user.avatar if @user.avatar.attached? %>
