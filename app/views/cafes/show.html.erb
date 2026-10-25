@@ -1,0 +1,16 @@
+<h1>カフェ詳細</h1>
+
+<%= @cafe.name %>
+<%= @cafe.description %>
+<%= @cafe.price %>
+<%= @cafe.address %>
+<%= @cafe.wifi %>
+<%= @cafe.power_outlet %>
+<%= @cafe.business_hours %>
+
+<% if user_signed_in? && @cafe.user == current_user %>
+  <%= link_to "編集", edit_cafe_path(@cafe) %>
+  <%= button_to "削除", @cafe, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
+<% end %>
+
+<%= link_to "一覧へ戻る", cafes_path %>

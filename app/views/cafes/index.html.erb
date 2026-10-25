@@ -1,1 +1,12 @@
 <h1>カフェ一覧</h1>
+
+<% @cafes.each do |cafe| %>
+
+<div>
+  <%= cafe.name %>
+  <%= cafe.description %>
+  <%= cafe.price %>
+  <%= link_to "詳細", cafe_path(cafe.id) %>
+</div>
+
+<% end %>

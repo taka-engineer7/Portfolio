@@ -1,0 +1,24 @@
+<%= form_with model: @cafe do |f| %>
+  <%= f.label :name, "カフェ名" %>
+  <%= f.text_field :name %>
+  
+  <%= f.label :description, "カフェ紹介" %>
+  <%= f.text_area :description %>
+
+  <%= f.label :price, "料金目安" %>
+  <%= f.number_field :price %>
+
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+
+  <%= f.label :wifi, "Wi-Fi情報" %>
+  <%= f.check_box :wifi %>
+
+  <%= f.label :power_outlet, "電源情報" %>
+  <%= f.check_box :power_outlet %>
+
+  <%= f.label :business_hours, "営業時間" %>
+  <%= f.text_field :business_hours %>
+
+  <%= f.submit "保存する" %>
+<% end %>

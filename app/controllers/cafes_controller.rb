@@ -1,4 +1,6 @@
 class CafesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     @cafes = Cafe.all
   end
@@ -11,7 +13,7 @@ class CafesController < ApplicationController
     @cafe = current_user.cafes.new(cafe_params)
 
     if @cafe.save
-      redirect_to "/cafes"
+      redirect_to cafes_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,21 +24,21 @@ class CafesController < ApplicationController
   end
 
   def edit
-    @cafe = Cafe.find(params[:id])
+    @cafe = current_user.cafes.find(params[:id])
   end
 
   def update
-    @cafe = Cafe.find(params[:id])
+    @cafe = current_user.cafes.find(params[:id])
 
     if @cafe.update(cafe_params)
-      redirect_to "/cafes/#{@cafe.id}"
+      redirect_to cafe_path(@cafe)
     else
       render :edit, status: :unprocessable_entity
     end
   end
   
   def destroy
-    @cafe = Cafe.find(params[:id])
+    @cafe = current_user.cafes.find(params[:id])
     @cafe.destroy
 
     redirect_to "/cafes", notice: "削除しました", status: :see_other

@@ -1,0 +1,3 @@
+<h1>カフェ情報編集</h1>
+<%= render "form", cafe: @cafe %>
+<%= button_to "削除", @cafe, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
