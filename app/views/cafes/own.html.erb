@@ -1,0 +1,20 @@
+<h1>登録カフェ一覧</h1>
+
+<table>
+  <tr>
+    <th>画像</th><th>カフェ名</th><th>紹介文</th><th>価格</th><th>住所</th>
+  </tr>
+  <% @cafes.each do |cafe| %>
+    <tr>
+      <td>
+        <% if cafe.image.attached? %>
+          <%= image_tag cafe.image %>
+        <% end %>
+      </td>
+      <td><%= cafe.name %></td>
+      <td><%= cafe.description %></td>
+      <td><%= cafe.price %></td>
+      <td><%= cafe.address %></td>
+    </tr>
+  <% end %>
+</table>

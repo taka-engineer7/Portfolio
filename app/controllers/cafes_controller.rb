@@ -1,8 +1,15 @@
 class CafesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
+  def own
+    @cafes = current_user.cafes
+  end
+
   def index
-    @cafes = Cafe.all
+    @cafes = Cafe.where("name LIKE ? OR description LIKE ? OR address LIKE ?",
+     "%#{params[:keyword]}%",
+     "%#{params[:keyword]}%",
+     "%#{params[:keyword]}%")
   end
 
   def new

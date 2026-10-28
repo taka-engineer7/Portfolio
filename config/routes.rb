@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "/", to: "homes#home"
+
+  get "cafes/own", to: "cafes#own"
+
   resources :cafes
 
   get "profiles/edit"

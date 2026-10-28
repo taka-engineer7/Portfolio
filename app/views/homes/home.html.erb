@@ -1,0 +1,6 @@
+<h1>作業カフェを探そう</h1>
+
+<%= form_with url: cafes_path, method: :get do |f| %>
+  <%= f.text_field :keyword %>
+  <%= f.submit "検索" %>
+<% end %>
