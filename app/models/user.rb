@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :cafes
+  has_many :favorites
+  has_many :favorite_cafes, through: :favorites, source: :cafe
 end

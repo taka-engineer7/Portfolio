@@ -1,0 +1,12 @@
+<h1>お気に入り登録</h1>
+
+<% @favorite_cafes.each do |favorite_cafe| %>
+
+<div>
+  <%= favorite_cafe.name %>
+  <%= favorite_cafe.description %>
+  <%= favorite_cafe.price %>
+  <%= link_to "詳細", cafe_path(favorite_cafe.id) %>
+</div>
+
+<% end %>

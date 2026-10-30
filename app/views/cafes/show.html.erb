@@ -8,6 +8,17 @@
 <%= @cafe.power_outlet %>
 <%= @cafe.business_hours %>
 
+<% if user_signed_in? %>
+  <% if current_user.favorites.exists?(cafe_id: @cafe.id) %>
+    <%= button_to "お気に入り解除", favorite_path(Favorite.find_by(user_id: current_user.id, cafe_id: @cafe.id)), method: :delete %>
+  <% else %>
+    <%= form_with url: favorites_path, method: :post do |favorite| %>
+      <%= favorite.hidden_field :cafe_id, value: @cafe.id %>
+      <%= favorite.submit "お気に入り登録" %> 
+    <% end %>
+  <% end %>
+<% end %>
+
 <% if user_signed_in? && @cafe.user == current_user %>
   <%= link_to "編集", edit_cafe_path(@cafe) %>
   <%= button_to "削除", @cafe, method: :delete, data: { turbo_confirm: "本当に削除しますか？" } %>
