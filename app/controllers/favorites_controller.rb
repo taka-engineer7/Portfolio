@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @favorite = Favorite.new(cafe_id: params[:cafe_id], user_id: current_user.id)
 
@@ -12,9 +13,10 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find(params[:id])
+    @favorite = current_user.favorites.find(params[:id])
+    cafe_id = @favorite.cafe_id
     @favorite.destroy
 
-    redirect_to cafe_path(@favorite.cafe_id), notice: "登録解除しました", status: :see_other
+    redirect_to favorites_path, notice: "登録解除しました", status: :see_other
   end
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :favorites
 
+  root "homes#home"
+
   get "/", to: "homes#home"
 
   get "cafes/own", to: "cafes#own"

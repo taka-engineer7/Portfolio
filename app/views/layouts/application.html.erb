@@ -15,9 +15,41 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
 
   <body>
+    <header>
+      <div class="d-flex justify-content-between align-items-center p-3 ps-5 pe-5" style="background-color: #F3EEE5;">
+        <h1>
+          <%= link_to "Nomad Cafe", root_path, class: "text-decoration-none text-black" %>
+        </h1>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <a class="text-decoration-none text-black dropdown-toggle" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.name || "ユーザー名" %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><%= link_to "お気に入りカフェ一覧", favorites_path, class: "dropdown-item" %></li>
+              <li><%= link_to "カフェの新規登録", new_cafe_path, class: "dropdown-item" %></li>
+              <li><%= link_to "登録済み一覧", cafes_own_path, class: "dropdown-item" %></li>
+              <li><%= link_to "アカウント設定", users_account_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </div>
+
+        <% else %>
+          <div>
+            <%= link_to "ログイン", new_user_session_path, class: "text-decoration-none btn btn-outline-dark fw-bold" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "text-decoration-none btn btn-outline-dark fw-bold" %>
+          </div>
+        <% end %>
+      </div>
+    </header>
+
     <%= yield %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

@@ -1,20 +1,40 @@
-<h1>登録カフェ一覧</h1>
+<div class="m-5">
+  <h1>登録カフェ一覧</h1>
 
-<table>
-  <tr>
-    <th>画像</th><th>カフェ名</th><th>紹介文</th><th>価格</th><th>住所</th>
-  </tr>
-  <% @cafes.each do |cafe| %>
-    <tr>
-      <td>
-        <% if cafe.image.attached? %>
-          <%= image_tag cafe.image %>
-        <% end %>
-      </td>
-      <td><%= cafe.name %></td>
-      <td><%= cafe.description %></td>
-      <td><%= cafe.price %></td>
-      <td><%= cafe.address %></td>
+  <table class="mt-4 w-100">
+    <tr class="border-bottom">
+      <th>画像</th><th>カフェ名</th><th>紹介文</th><th>価格</th><th>住所</th><th>Wi-Fi情報</th><th>電源情報</th><th>営業時間</th>
     </tr>
-  <% end %>
-</table>
+    <% @cafes.each do |cafe| %>
+      <tr class="border-bottom m-3">
+        <td class="py-3">
+          <% if cafe.image.attached? %>
+            <%= image_tag cafe.image, style: "width: 150px;" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", style: "width: 150px;" %>
+          <% end %>
+        </td>
+        <td class="py-3"><%= cafe.name %></td>
+        <td class="py-3"><%= cafe.description %></td>
+        <td class="py-3">￥<%= cafe.price %>～</td>
+        <td class="py-3"><%= cafe.address %></td>
+        <td class="py-3"><%= cafe.wifi ? "有" : "無" %></td>
+        <td class="py-3"><%= cafe.power_outlet ? "有" : "無" %></td>
+        <td class="py-3"><%= cafe.business_hours %></td>
+        <td class="py-3">
+          <div class="dropdown">
+            <a class="text-decoration-none text-black fs-6 fw-bold" href="#" data-bs-toggle="dropdown">&#8942;</a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <%= link_to "編集", edit_cafe_path(cafe), class: "dropdown-item" %>
+              </li>
+              <li>
+                <%= button_to "削除", cafe_path(cafe), method: :delete, class: "dropdown-item text-danger", form: { data: { turbo_confirm: "本当に削除しますか？"}} %>
+              </li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

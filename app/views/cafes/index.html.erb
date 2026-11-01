@@ -1,12 +1,27 @@
-<h1>カフェ一覧</h1>
+<div class="m-5">
+  <p class="fs-4"><strong><%= @cafes.count %></strong>件のカフェが見つかりました</p>
 
-<% @cafes.each do |cafe| %>
+  <div class="d-flex flex-wrap justify-content-between">
+    <% @cafes.each do |cafe| %>
 
-<div>
-  <%= cafe.name %>
-  <%= cafe.description %>
-  <%= cafe.price %>
-  <%= link_to "詳細", cafe_path(cafe.id) %>
+    <div style="width: 450px;", class="bg-light mb-4">
+      <% if cafe.image.attached? %>
+        <%= image_tag cafe.image, style: "width: 450px; height: 300px;" %>
+      <% else %>
+        <%= image_tag "no_image.jpg", style: "width: 450px; height: 300px;" %>
+      <% end %>
+      <div class="m-4">
+        <p class="fs-3"><%= cafe.name %></p>
+        <p><%= cafe.description %></p>
+        <div class="d-flex justify-content-between">
+          <p class="fs-3 fw-bold text-danger">￥<%= cafe.price %>～</p>
+          <div class="text-center">
+            <%= link_to "詳細はこちら", cafe_path(cafe.id), class: "text-decoration-none btn border-0 text-white px-4 py-2", style: "background-color: #f56c52;" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
 </div>
-
-<% end %>

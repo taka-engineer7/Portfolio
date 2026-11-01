@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :cafes
   has_many :favorites
   has_many :favorite_cafes, through: :favorites, source: :cafe
+
+  validates :name, presence: true
 end
