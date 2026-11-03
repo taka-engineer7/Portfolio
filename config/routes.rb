@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "guest_login", to: "guest_sessions#create"
+
   resources :favorites
 
   root "homes#home"

@@ -29,6 +29,10 @@
         <%= f.submit "登録する", class: "form-control form-control-lg text-white", style: "background-color: #f77c63;" %>
       </div>
     <% end %>
+  
+  <div class="mb-3">
+    <%= button_to "ゲストログイン", guest_login_path, method: :post, class: "form-control form-control-lg text-white", style: "background-color: #495057"  %>
+  </div>
 
   <%= render "devise/shared/links" %>
   </div>

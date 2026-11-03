@@ -1,6 +1,6 @@
 <%= form_with model: @cafe do |f| %>
   <div class="row mt-3 mb-3">
-    <%= f.label :name, "カフェ名", class: "col-4" %>
+    <p class= "col-4"><%= f.label :name, "カフェ名" %><span class="text-danger">*</span></p>
     <%= f.text_field :name, class: "col-8" %>
   </div>
   
@@ -10,28 +10,30 @@
   </div>
 
   <div class="row mb-3">
-    <%= f.label :price, "料金目安", class: "col-4" %>
-    <%= f.number_field :price, class: "col-8" %>
+    <p class= "col-4"><%= f.label :price, "料金目安" %><span class="text-danger">*</span></p>
+    <div class= "col-8">
+      ￥<%= f.number_field :price %>～
+    </div>
   </div>
 
   <div class="row mb-3">
-    <%= f.label :address, "住所", class: "col-4" %>
+    <p class= "col-4"><%= f.label :address, "住所" %><span class="text-danger">*</span></p>
     <%= f.text_field :address, class: "col-8" %>
   </div>
 
   <div class="row mb-3">
-    <%= f.label :wifi, "Wi-Fi情報", class: "col-4" %>
+    <%= f.label :wifi, "Wi-Fiの有無", class: "col-4" %>
     <%= f.check_box :wifi, class: "col-8" %>
   </div>
 
   <div class="row mb-3"> 
-    <%= f.label :power_outlet, "電源情報", class: "col-4" %>
+    <%= f.label :power_outlet, "電源の有無", class: "col-4" %>
     <%= f.check_box :power_outlet, class: "col-8" %>
   </div>
 
   <div class="row mb-4">
-    <%= f.label :business_hours, "営業時間", class: "col-4" %>
-    <%= f.text_field :business_hours, class: "col-8" %>
+    <p class= "col-4"><%= f.label :business_hours, "営業時間" %><span class="text-danger">*</span></p>
+    <%= f.text_field :business_hours, class: "col-8", placeholder: "例）08：00～20：00" %>
   </div>
 
   <div class="row mb-3">
