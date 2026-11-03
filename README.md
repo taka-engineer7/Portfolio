@@ -1,24 +1,52 @@
-# README
+<img width="1872" height="845" alt="スクリーンショット 2026-11-03 163651" src="https://github.com/user-attachments/assets/81638686-f553-46db-998c-b56dab70dc3c" /># Nomad Cafe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ概要
 
-Things you may want to cover:
+Nomad Cafeは、リモートワーカー向けのカフェ検索アプリです。
 
-* Ruby version
+Wi-Fiや電源の有無、料金、営業時間など、作業場所を探す際に気になる情報を確認しながら、自分に合ったカフェを見つけることができます。
 
-* System dependencies
+## アプリのスクリーンショット
 
-* Configuration
+### トップページ
+<img width="1905" height="857" alt="スクリーンショット 2026-11-03 163524" src="https://github.com/user-attachments/assets/09b64665-b2bc-441f-86a2-e57c0d9f28c2" />
 
-* Database creation
+### カフェ一覧ページ
+<img width="1883" height="862" alt="スクリーンショット 2026-11-03 163622" src="https://github.com/user-attachments/assets/67a0acc6-2408-4b5a-a22c-aedd251feb9d" />
 
-* Database initialization
+### カフェ詳細ページ
+<img width="1872" height="845" alt="image" src="https://github.com/user-attachments/assets/96b7c57d-c9e2-4e86-88af-77892f48130e" />
 
-* How to run the test suite
+### お気に入りページ
+<img width="1875" height="827" alt="スクリーンショット 2026-11-03 163819" src="https://github.com/user-attachments/assets/a69cfc3e-a18e-41f2-a707-f56c7e2faaa1" />
 
-* Services (job queues, cache servers, search engines, etc.)
+## アプリの使い方
 
-* Deployment instructions
+1. アカウント登録、またはゲストログインを行います。
+2. ホーム画面でキーワード検索をし、検索結果から気になるカフェを探します。
+3. カフェの詳細ページで、Wi-Fi・電源・料金・営業時間などの情報を確認します。
+4. 気に入ったカフェをお気に入りに登録できます。
+5. 自分で見つけたカフェを新規登録することもできます。
 
-* ...
+## 開発の背景・目的
+
+台湾をはじめ、さまざまな国や地域で生活・旅行をする中で、外出先で仕事や作業ができるカフェを探す機会が多くありました。
+
+しかし、一般的なカフェ検索では、Wi-Fiや電源の有無、長時間滞在のしやすさなど、作業場所を探すうえで知りたい情報をまとめて比較することが難しいと感じていました。
+
+そこで、リモートワーカーが場所を問わず快適に作業できるカフェを見つけられるサービスを作りたいと考え、開発しました。
+
+## 工夫したところ
+
+- **ノマドワーカー向けの情報設計**
+  - Wi-Fiや電源の有無、料金、営業時間など、作業場所を選ぶ際に重要な情報を確認できるようにしました。
+- **お気に入り機能**
+  - 気になるカフェをお気に入りに登録し、マイページから確認できるようにしました。
+- **ユーザーによるカフェ登録**
+  - ユーザー自身がカフェ情報を登録できる仕組みにしました。
+- **ユーザー認証**
+  - Deviseを利用し、ユーザー登録・ログイン・アカウント管理機能を実装しました。
+
+## ER図
+<img width="891" height="2423" alt="ポートフォリオER図" src="https://github.com/user-attachments/assets/d14cbe99-f414-45d1-851d-0899992ca3f4" />
+
