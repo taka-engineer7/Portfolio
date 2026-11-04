@@ -7,7 +7,7 @@
     <h1>Find Your Perfect Workspace.</h1>
     <p>お気に入りの作業カフェを見つけよう。</p>
     <%= form_with url: cafes_path, method: :get do |f| %>
-      <%= f.text_field :keyword, class: "form-control form-control-lg" %>
+      <%= f.text_field :keyword, class: "form-control form-control-lg", placeholder: "店名・場所など" %>
       <%= f.submit "検索", class: "form-control form-control-lg mt-3 text-white", style: "background-color: #f77c63;" %>
     <% end %>
   </div> 
