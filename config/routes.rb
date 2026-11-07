@@ -1,4 +1,30 @@
 Rails.application.routes.draw do
+  post "guest_login", to: "guest_sessions#create"
+
+  resources :favorites
+
+  root "homes#home"
+
+  get "/", to: "homes#home"
+
+  get "cafes/own", to: "cafes#own"
+
+  resources :cafes
+
+  get "profiles/edit"
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  devise_scope :user do
+    get "users/account", to: "users/registrations#show"
+    get "users/account/edit", to: "users/registrations#edit"
+  end
+
+  get "users/profile", to: "profiles#show"
+  get "users/profile/edit", to: "profiles#edit"
+  patch "users/profile/edit", to: "profiles#update"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

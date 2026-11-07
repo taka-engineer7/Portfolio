@@ -1,0 +1,46 @@
+<div class="d-flex m-5">
+
+  <div style="width: 300px;" class="me-5">
+    <h3 class="mb-4">設定</h3>
+    <div class="list-group">
+      <%= link_to "アカウント", users_account_path, class: "list-group-item text-decoration-none text-danger py-3" %>
+      <%= link_to "プロフィール", users_profile_path, class: "list-group-item text-decoration-none text-black py-3" %>
+    </div>
+  </div>
+
+  <div class="w-100">
+    <div class="d-flex justify-content-between border-bottom mb-4">
+      <h3>アカウント</h3>
+      <p><%= link_to "🖊編集", users_account_edit_path, class: "text-decoration-none fs-4" %></p>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="d-flex row align-items-center">
+      <p class="col-3">メールアドレス</p>
+      <p class="col-9"><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %></p>
+    </div>
+    <div class="d-flex row align-items-center">
+      <p class="col-3">変更後パスワード</p>
+      <p class="col-9"><%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg" %></p>
+    </div>
+    <div class="d-flex row align-items-center">
+      <p class="col-3">確認用パスワード</p>
+      <p class="col-9"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg" %></p>
+    </div>
+    <div class="d-flex row align-items-center">
+      <p class="col-3">現在のパスワード</p>
+      <p class="col-9"><%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-lg" %></p>
+    </div> 
+
+    <div class="d-flex justify-content-end">
+      <%= link_to "キャンセル", request.referer || root_path, class: "btn border me-3 p-3" %>
+      <%= f.submit "保存", class: "btn text-white p-3", style: "background-color: #f77c63;" %>
+    </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+

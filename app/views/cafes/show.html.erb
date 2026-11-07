@@ -1,0 +1,57 @@
+<div class="m-5">
+  <div class="d-flex justify-content-between">
+    <%= link_to "👈一覧へ戻る", cafes_path, class: "text-decoration-none fs-4" %>
+
+    <% if user_signed_in? && @cafe.user == current_user %>
+      <%= link_to "🖊編集", edit_cafe_path(@cafe), class: "text-decoration-none fs-4" %>
+    <% end %>
+  </div>
+  
+  <div class="d-flex justify-content-center">
+    <% if @cafe.image.attached? %>
+      <%= image_tag @cafe.image, style: "width: 550px;" %>
+    <% else %>
+      <%= image_tag "no_image.jpg", style: "width: 550px;" %> 
+    <% end %>
+
+    <div class="bg-light w-100 ms-5">
+      <div class="m-5 ">
+
+        <div>
+          <div class="d-flex justify-content-between">
+            <p class="fs-2"><%= @cafe.name %></p>
+            <p class="fs-2 fw-bold text-danger">￥<%= @cafe.price %>～</p>
+          </div>
+          <p>📍<%= @cafe.address %></p>
+          <p><%= @cafe.description %></p>
+          <div class="bg-white">
+            <div class="p-3 mb-3">
+              <p>＜📶Wi-Fi＞<%= @cafe.wifi ? "有" : "無" %></p>
+              <p>＜🔌電源＞<%= @cafe.power_outlet ? "有" : "無" %></p>
+              <p>＜⏱営業時間＞<%= @cafe.business_hours %></p>
+            </div>
+          </div>
+        </div>
+
+        <% if user_signed_in? %>
+          <% if current_user.favorites.exists?(cafe_id: @cafe.id) %>
+            <%= button_to favorite_path(Favorite.find_by(user_id: current_user.id, cafe_id: @cafe.id)),
+              method: :delete,
+              class: "btn btn-link text-danger p-0" do %>
+              <i class="bi bi-heart-fill fs-3"></i>
+            <% end %>
+          <% else %>
+            <%= form_with url: favorites_path, method: :post do |favorite| %>
+              <%= favorite.hidden_field :cafe_id, value: @cafe.id %>
+              <%= favorite.button class: "btn btn-link text-danger p-0" do %>
+                <i class="bi bi-heart fs-3"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</div>

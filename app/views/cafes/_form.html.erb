@@ -1,0 +1,46 @@
+<%= form_with model: @cafe do |f| %>
+  <div class="row mt-3 mb-3">
+    <p class= "col-4"><%= f.label :name, "カフェ名" %><span class="text-danger">*</span></p>
+    <%= f.text_field :name, class: "col-8" %>
+  </div>
+  
+  <div class="row mb-3"> 
+    <%= f.label :description, "カフェ紹介", class: "col-4" %>
+    <%= f.text_area :description, class: "col-8" %>
+  </div>
+
+  <div class="row mb-3">
+    <p class= "col-4"><%= f.label :price, "料金目安" %><span class="text-danger">*</span></p>
+    <div class= "col-8">
+      ￥<%= f.number_field :price %>～
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <p class= "col-4"><%= f.label :address, "住所" %><span class="text-danger">*</span></p>
+    <%= f.text_field :address, class: "col-8" %>
+  </div>
+
+  <div class="row mb-3">
+    <%= f.label :wifi, "Wi-Fiの有無", class: "col-4" %>
+    <%= f.check_box :wifi, class: "col-8" %>
+  </div>
+
+  <div class="row mb-3"> 
+    <%= f.label :power_outlet, "電源の有無", class: "col-4" %>
+    <%= f.check_box :power_outlet, class: "col-8" %>
+  </div>
+
+  <div class="row mb-4">
+    <p class= "col-4"><%= f.label :business_hours, "営業時間" %><span class="text-danger">*</span></p>
+    <%= f.text_field :business_hours, class: "col-8", placeholder: "例）08：00～20：00" %>
+  </div>
+
+  <div class="row mb-3">
+    <%= f.label :image, "画像アップロード", class: "col-4" %>
+    <%= f.file_field :image, class: "col-8" %>
+  </div>
+
+  <%= f.submit "保存する", class: "form-control form-control-lg text-white fs-6", style: "background-color: #f77c63;" %>
+  <%= link_to "キャンセル", request.referer || root_path, class: "form-control form-control-lg text-decoration-none text-center mt-2 fs-6" %>
+<% end %>

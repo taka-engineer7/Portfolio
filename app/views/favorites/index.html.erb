@@ -1,0 +1,38 @@
+<div class="m-5">
+  <h1>お気に入り登録</h1>
+
+  <table class="mt-4 w-100">
+    <tr class="border-bottom">
+      <th>画像</th><th>カフェ名</th><th>紹介文</th><th>価格</th><th>住所</th><th>Wi-Fi情報</th><th>電源情報</th><th>営業時間</th>
+    </tr>
+    <% @favorite_cafes.each do |favorite_cafe| %>
+      <tr class="border-bottom m-3">
+        <td class="py-3">
+          <% if favorite_cafe.image.attached? %>
+            <%= image_tag favorite_cafe.image, style: "width: 150px;" %>
+          <% else %>
+            <%= image_tag "no_image.jpg", style: "width: 150px;" %>
+          <% end %>
+        </td>
+        <td class="py-3"><%= favorite_cafe.name %></td>
+        <td class="py-3"><%= favorite_cafe.description %></td>
+        <td class="py-3">￥<%= favorite_cafe.price %>～</td>
+        <td class="py-3"><%= favorite_cafe.address %></td>
+        <td class="py-3"><%= favorite_cafe.wifi ? "有" : "無" %></td>
+        <td class="py-3"><%= favorite_cafe.power_outlet ? "有" : "無" %></td>
+        <td class="py-3"><%= favorite_cafe.business_hours %></td>
+        <td class="py-3">
+
+        <% favorite = current_user.favorites.find_by(cafe_id: favorite_cafe.id) %>
+
+        <%= button_to favorite_path(favorite),
+            method: :delete,
+            class: "btn btn-link text-danger p-0" do %>
+          <i class="bi bi-heart-fill fs-3"></i>
+        <% end %>
+
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,4 +1,4 @@
-<img width="1872" height="845" alt="スクリーンショット 2026-11-03 163651" src="https://github.com/user-attachments/assets/81638686-f553-46db-998c-b56dab70dc3c" /># Nomad Cafe
+# Nomad Cafe
 
 ## アプリ概要
 
@@ -49,4 +49,3 @@ Wi-Fiや電源の有無、料金、営業時間など、作業場所を探す際
 
 ## ER図
 <img width="891" height="2423" alt="ポートフォリオER図" src="https://github.com/user-attachments/assets/d14cbe99-f414-45d1-851d-0899992ca3f4" />
-
