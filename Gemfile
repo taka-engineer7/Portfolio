@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "cloudinary"
 gem "devise"
 gem 'json', '< 3.0.0'
 gem "fiddle"
