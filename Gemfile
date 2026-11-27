@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "cloudinary"
 gem "devise"
-gem 'json', '< 3.0.0'
+gem 'json', '< 4.0.0'
 gem "fiddle"
 gem "rails-i18n"
 
